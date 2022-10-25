@@ -51,10 +51,14 @@ public class HtmlLexerTest extends TestCase {
     StringBuilder actual = new StringBuilder();
     lex(input, actual);
 
+    input = input.replaceAll( "\\r", "" );
+
     // Get the golden.
     String golden = Resources.toString(
         Resources.getResource(getClass(), "htmllexergolden1.txt"),
         Charsets.UTF_8);
+
+    golden = golden.replaceAll( "\\r", "" );
 
     // Compare.
     assertEquals(golden, actual.toString());
